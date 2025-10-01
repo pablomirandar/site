@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pablo Miranda Rozas — Perfil Académico</title>
+  <meta name="description" content="Perfil académico de Pablo Miranda Rozas: investigación, docencia, publicaciones y contacto." />
+  <meta property="og:title" content="Pablo Miranda Rozas — Perfil Académico" />
+  <meta property="og:description" content="Investigación, docencia, publicaciones y contacto." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f172a'/><text x='50' y='58' text-anchor='middle' font-size='54' fill='white' font-family='Arial, Helvetica, sans-serif'>PM</text></svg>">
+  
+  <style>
+    :root {
+      --bg: #0b1020; --bg-soft:#111633; --fg:#e5e7eb; --muted:#93a4bd;
+      --accent:#7dd3fc; --accent-strong:#38bdf8; --line:#223057; --chip:#1b254b;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    :root.light { --bg:#f8fafc; --bg-soft:#ffffff; --fg:#0f172a; --muted:#475569;
+      --accent:#0ea5e9; --accent-strong:#0284c7; --line:#e2e8f0; --chip:#f1f5f9;
+      --shadow:0 10px 24px rgba(2,6,23,.08); }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica Neue,Arial;
+      background: radial-gradient(1200px 800px at 85% -10%, rgba(56,189,248,.08), transparent 60%),
+                  radial-gradient(900px 700px at -10% 20%, rgba(125,211,252,.10), transparent 60%),
+                  var(--bg);
+      color:var(--fg); line-height:1.6; letter-spacing:.2px}
+    a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-strong);text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    .nav{position:sticky;top:0;backdrop-filter:blur(10px);z-index:40}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;border-bottom:1px solid var(--line);
+      background: color-mix(in oklab, var(--bg) 82%, transparent)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#a78bfa);
+      display:grid;place-items:center;color:#0b1020;font-weight:800}
+    .brand-title{font-weight:800;letter-spacing:.5px}
+    .nav a{font-weight:600}.nav-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;padding:56px 0 28px;align-items:center}
+    .hero-card{background:linear-gradient(180deg,color-mix(in oklab, var(--bg-soft) 85%, transparent),var(--bg-soft));
+      border:1px solid var(--line);box-shadow:var(--shadow);border-radius:24px;padding:28px}
+    .hero h1{font-size:clamp(28px,4vw,46px);line-height:1.15;margin:0 0 12px}
+    .subtitle{color:var(--muted);margin:0 0 16px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.chip{background:var(--chip);border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-size:.9rem}
+    .actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid var(--line);font-weight:700;cursor:pointer;background:var(--bg-soft);box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),#a78bfa);color:#0b1020;border:none}.btn:hover{transform:translateY(-1px)}
+    .avatar{width:220px;height:220px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(135deg,#1f2937,#0b1020);
+      box-shadow:var(--shadow);display:grid;place-items:center;font-size:56px;font-weight:800}
+    section{padding:28px 0}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+    .col-4{grid-column:span 4}.col-8{grid-column:span 8}
+    .card{background:var(--bg-soft);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:20px;padding:22px}
+    .section-title{margin:0 0 14px;font-size:1.4rem}.muted{color:var(--muted)}
+    ul.clean{list-style:none;margin:0;padding:0} ul.clean li{padding:10px 0;border-bottom:1px dashed var(--line)} ul.clean li:last-child{border-bottom:none}
+    .pub-title{font-weight:700}.pub-venue{opacity:.85}.pub-meta{color:var(--muted);font-size:.95rem}
+    .footer{margin:40px 0 20px;color:var(--muted);font-size:.95rem;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.avatar{width:160px;height:160px;font-size:42px}.col-4,.col-8{grid-column:span 12}}
+  </style>
+
+</head>
+<body>
+  <header class="nav" aria-label="Barra de navegación">
+    <div class="nav-inner container">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">PM</div>
+        <div class="brand-title">Pablo Miranda Rozas</div>
+      </div>
+      <nav class="nav-links" aria-label="Secciones del sitio">
+        <a href="#acerca">Acerca</a>
+        <a href="#investigacion">Investigación</a>
+        <a href="#publicaciones">Publicaciones</a>
+        <a href="#docencia">Docencia</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn" href="../index.html" lang="en" hreflang="en">EN 🇬🇧</a>
+        <button class="btn" id="themeBtn" type="button" aria-label="Cambiar tema">🌗 Tema</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="top">
+    <section class="hero" aria-labelledby="titulo-principal">
+      <div class="hero-card">
+        <h1 id="titulo-principal">Pablo Miranda Rozas</h1>
+        <p class="subtitle">Investigador y docente en <strong>Física Matemática y Teoría Espectral</strong>. Interesado en <em>operadores de Schrödinger magnéticos, resonancias en sistemas cuánticos y propiedades espectrales de operadores discretos</em>, con foco en resultados rigurosos y formación de talento.</p>
+        <div class="chips" aria-label="Intereses de investigación">
+          <span class="chip">Física Matemática</span>
+          <span class="chip">Operadores de Schrödinger magnéticos</span>
+          <span class="chip">Resonancias cuánticas</span>
+          <span class="chip">Operadores discretos</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="#contacto">📨 Contacto</a>
+          <a class="btn" href="#cv">📄 Descargar CV</a>
+          <a class="btn" href="#publicaciones">📚 Publicaciones</a>
+        </div>
+      </div>
+      <div class="avatar" aria-label="Foto de perfil (reemplázala por una imagen)">PM</div>
+    </section>
+
+    <section id="acerca" class="grid" aria-labelledby="acerca-title">
+      <div class="col-8">
+        <div class="card">
+          <h2 class="section-title" id="acerca-title">Acerca de mí</h2>
+          <p>Soy <strong>Pablo Miranda Rozas</strong>, académico (Associate Professor) del <strong>Departamento de Matemática y Ciencia de la Computación</strong> de la <strong>Universidad de Santiago de Chile (USACH)</strong>. Investigo problemas de <strong>física matemática y teoría espectral</strong>, con énfasis en operadores de Schrödinger magnéticos, resonancias y operadores discretos.</p>
+          <p>Doctor en Matemáticas por la <em>Universidad de Chile</em> (2011). He realizado estadías y colaboraciones en <em>Université de Bordeaux</em>, Institut Henri Poincaré, e Institut Mittag-Leffler, entre otros. Actualmente dirijo y colaboro en proyectos FONDECYT y co-superviso estudiantes de posgrado.</p>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card" id="cv">
+          <h3 class="section-title">Formación</h3>
+          <ul class="clean">
+            <li><strong>Doctorado</strong> en Matemáticas — <em>Universidad de Chile</em>, 2011.</li>
+            <li><strong>Licenciatura</strong> en Matemáticas — <em>Universidad de Chile</em>, 2005.</li>
+          </ul>
+          <p class="muted">Tesis: <em>Spectral Properties of Magnetic Quantum Hamiltonians</em>. Director: Georgi Raikov.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="investigacion" class="grid" aria-labelledby="investigacion-title">
+      <div class="col-4">
+        <div class="card">
+          <h3 class="section-title" id="investigacion-title">Líneas de investigación</h3>
+          <ul class="clean">
+            <li>• Operadores de Schrödinger magnéticos: espectro, umbrales y desplazamiento espectral.</li>
+            <li>• Resonancias en sistemas cuánticos y guías de onda deformadas.</li>
+            <li>• Propiedades espectrales de operadores discretos (ℤ, ℤ²; Dirac/Hodge-Dirac).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="card">
+          <h3 class="section-title">Proyectos seleccionados</h3>
+          <ul class="clean">
+            <li>
+              <div class="pub-title">FONDECYT Regular 1241983 — <em>Spectral properties of continuous and discrete quantum Hamiltonians</em></div>
+              <div class="pub-meta">Rol: Investigador Responsable · 2024–2027 · ANID</div>
+            </li>
+            <li>
+              <div class="pub-title">FONDECYT Regular 1201857 — <em>Resonances and Spectral Shift Function for Magnetic Systems</em></div>
+              <div class="pub-meta">Rol: Investigador Responsable · 2020–2023 · ANID</div>
+            </li>
+            <li>
+              <div class="pub-title">Inserción en la academia PAI 79160144</div>
+              <div class="pub-meta">2017–2019</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="publicaciones" aria-labelledby="publicaciones-title">
+      <div class="card">
+        <h2 class="section-title" id="publicaciones-title">Publicaciones seleccionadas</h2>
+        <ul class="clean">
+          <li>
+            <div class="pub-title">Clusters of resonances for a non-selfadjoint multichannel discrete Schrödinger operator</div>
+            <div class="pub-meta"><strong>Miranda Rozas, P.</strong>, Assal, M., Bourget, O., Sambou, D. (2025). <span class="pub-venue">Journal of Mathematical Physics 66, 073504</span>.</div>
+          </li>
+          <li>
+            <div class="pub-title">Eigenvalue Asymptotics Near a Flat Band in the Presence of a Slowly Decaying Potential</div>
+            <div class="pub-meta">Parra, D.; <strong>Miranda Rozas, P.</strong> (2025). <span class="pub-venue">Asymptotic Analysis 142(4)</span>.</div>
+          </li>
+          <li>
+            <div class="pub-title">Semiclassical resolvent estimates for matrix Schrödinger operators and applications</div>
+            <div class="pub-meta">Assal, M.; Zerzeri, M.; <strong>Miranda Rozas, P.</strong> (2025). <span class="pub-venue">Reviews in Mathematical Physics 37(05), 2450043</span>.</div>
+          </li>
+          <li>
+            <div class="pub-title">Continuum Limit for a Discrete Hodge-Dirac Operator on Square Lattices</div>
+            <div class="pub-meta"><strong>Miranda Rozas, P.</strong>; Parra, D. (2023). <span class="pub-venue">Letters in Mathematical Physics 113, 45</span>.</div>
+          </li>
+          <li>
+            <div class="pub-title">Spectral Asymptotics at Thresholds for a Dirac-type Operator on ℤ²</div>
+            <div class="pub-meta">Parra, D.; Raikov, G.; <strong>Miranda Rozas, P.</strong> (2023). <span class="pub-venue">Journal of Functional Analysis 284(2)</span>.</div>
+          </li>
+          <li>
+            <div class="pub-title">Eigenvalue and Resonance Asymptotics in Perturbed Periodically Twisted Tubes: Twisting Versus Bending</div>
+            <div class="pub-meta">Bruneau, V.; Parra, D.; Popoff, N.; <strong>Miranda Rozas, P.</strong> (2020). <span class="pub-venue">Annales Henri Poincaré 21, 377–403</span>.</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="docencia" class="grid" aria-labelledby="docencia-title">
+      <div class="col-8">
+        <div class="card">
+          <h2 class="section-title" id="docencia-title">Docencia</h2>
+          <ul class="clean">
+            <li><strong>Topology and Geometry I</strong> — Programa de Magíster USACH, 2020 y 2023.</li>
+            <li><strong>Spectral Theory (I & II)</strong> — Posgrado USACH, 2021.</li>
+            <li><strong>Análisis I</strong> — USACH, 2018–2019.</li>
+            <li><strong>Geometría Diferencial</strong> — USACH, 2022.</li>
+            <li><strong>Teoría de la Medida / Análisis Funcional</strong> — USACH, 2018–2022.</li>
+            <li><strong>Cálculo I–III / II</strong> — USACH, UTFSM y PUC, 2014–2017.</li>
+            <li><strong>Dirección de tesis</strong> — Posgrado y pregrado.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <h3 class="section-title">Cargos y gestión académica</h3>
+          <ul class="clean">
+            <li>Jefe del programa de Magíster, DMCC, USACH — 2022–presente.</li>
+            <li>Subdirector de Investigación, DMCC, USACH — abr 2022–dic 2023.</li>
+            <li>Coordinador de Cálculo II (Facultad de Ingeniería, USACH) — 2019–2022.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="grid" aria-labelledby="contacto-title">
+      <div class="col-8">
+        <div class="card">
+          <h2 class="section-title" id="contacto-title">Contacto</h2>
+          <p>
+            <strong>Email:</strong> <a href="mailto:pablo.miranda.r@usach.cl">pablo.miranda.r@usach.cl</a><br/>
+            <strong>Afiliación:</strong> Departamento de Matemática y Ciencia de la Computación, Universidad de Santiago de Chile.<br/>
+            <strong>Dirección:</strong> Las Sophoras 173, Estación Central, Santiago, Chile.
+          </p>
+          <p>
+            <a class="btn" href="https://scholar.google.com" target="_blank" rel="noopener">📘 Google Scholar</a>
+            <a class="btn" href="https://orcid.org" target="_blank" rel="noopener">🧬 ORCID</a>
+            <a class="btn" href="https://github.com" target="_blank" rel="noopener">💻 GitHub</a>
+            <a class="btn" href="https://www.linkedin.com" target="_blank" rel="noopener">🔗 LinkedIn</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <h3 class="section-title">Noticias breves</h3>
+          <ul class="clean">
+            <li><strong>Sep 2025</strong> Artículo aceptado en <em>Journal of Mathematical Physics</em> sobre resonancias en operadores discretos multicanal.</li>
+            <li><strong>2024</strong> Estadía como Visiting Scholar en Université de Bordeaux (febrero–junio).</li>
+            <li><strong>2023</strong> Publicaciones en <em>Letters in Mathematical Physics</em> y <em>Journal of Functional Analysis</em>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Pablo Miranda Rozas — Todos los derechos reservados.</span>
+      <a href="#top" aria-label="Volver arriba">⬆️ Volver arriba</a>
+    </footer>
+  </main>
+
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pablo Miranda Rozas",
+    "email": "mailto:pablo.miranda.r@usach.cl",
+    "affiliation": {{"@type": "Organization", "name": "Universidad de Santiago de Chile"}},
+    "jobTitle": "Académico / Investigador",
+    "alumniOf": ["Universidad de Chile"],
+    "knowsAbout": ["Física Matemática", "Operadores de Schrödinger magnéticos", "Resonancias cuánticas", "Operadores discretos"],
+    "sameAs": []
+  }}
+  </script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') root.classList.add('light');
+    themeBtn.addEventListener('click', () => {{ root.classList.toggle('light'); localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark'); }});
+  </script>
+</body>
+</html>
