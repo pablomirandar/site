@@ -12,19 +12,48 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f172a'/><text x='50' y='58' text-anchor='middle' font-size='54' fill='white' font-family='Arial, Helvetica, sans-serif'>PM</text></svg>">
   
   <style>
-    :root {
-      --bg: #0b1020; --bg-soft:#111633; --fg:#e5e7eb; --muted:#93a4bd;
-      --accent:#7dd3fc; --accent-strong:#38bdf8; --line:#223057; --chip:#1b254b;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    :root.light { --bg:#f8fafc; --bg-soft:#ffffff; --fg:#0f172a; --muted:#475569;
-      --accent:#0ea5e9; --accent-strong:#0284c7; --line:#e2e8f0; --chip:#f1f5f9;
-      --shadow:0 10px 24px rgba(2,6,23,.08); }
+    
+    html { scroll-behavior: smooth; }
+:root{
+  --bg:#0b1020;
+  --bg-soft:#111633;
+
+  /* Texto */
+  --fg:#eaf0ff;         /* un pelín más claro */
+  --muted:#a6b3c6;      /* más legible en dark */
+
+  /* Acento celeste (moderno) */
+  --accent:#5fd3ff;
+  --accent-strong:#22b8ff;
+
+  /* Bordes/chips */
+  --line:#2a355e;       /* menos “duro” */
+  --chip:#202b55;       /* chips más visibles */
+
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+:root.light{
+  --bg:#f7fbff;         /* blanco con tinte frío */
+  --bg-soft:#ffffff;
+
+  --fg:#0f172a;
+  --muted:#4a5a73;
+
+  --accent:#0284c7;     /* celeste más “profesional” en light */
+  --accent-strong:#0369a1;
+
+  --line:#d8e1ee;
+  --chip:#eef5ff;
+
+  --shadow:0 10px 24px rgba(2,6,23,.08);
+}
     *{box-sizing:border-box} html,body{height:100%}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica Neue,Arial;
-      background: radial-gradient(1200px 800px at 85% -10%, rgba(56,189,248,.08), transparent 60%),
-                  radial-gradient(900px 700px at -10% 20%, rgba(125,211,252,.10), transparent 60%),
-                  var(--bg);
+    background:
+  radial-gradient(1200px 800px at 85% -10%, rgba(56,189,248,.05), transparent 60%),
+  radial-gradient(900px 700px at -10% 20%, rgba(125,211,252,.06), transparent 60%),
+  var(--bg);
       color:var(--fg); line-height:1.6; letter-spacing:.2px}
     a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-strong);text-decoration:underline}
     .container{max-width:1100px;margin:0 auto;padding:24px}
@@ -45,8 +74,7 @@
     .actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
     .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid var(--line);font-weight:700;cursor:pointer;background:var(--bg-soft);box-shadow:var(--shadow)}
     .btn.primary{background:linear-gradient(135deg,var(--accent),#a78bfa);color:#0b1020;border:none}.btn:hover{transform:translateY(-1px)}
-    .avatar{width:220px;height:220px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(135deg,#1f2937,#0b1020);
-      box-shadow:var(--shadow);display:grid;place-items:center;font-size:56px;font-weight:800}
+    .avatar{width:220px;height:220px;border-radius:24px;border:1px solid var(--line);box-shadow:var(--shadow);object-fit:cover;display:block}
     section{padding:28px 0}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
     .col-4{grid-column:span 4}.col-8{grid-column:span 8}
     .card{background:var(--bg-soft);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:20px;padding:22px}
@@ -81,12 +109,13 @@
     <section class="hero" aria-labelledby="main-title">
       <div class="hero-card">
         <h1 id="main-title">Pablo Miranda Rozas</h1>
-        <p class="subtitle"> <!--Associate Professor </strong>. Interests in research include <em>magnetic Schrödinger operators, resonances in quantum systems, and spectral properties of discrete operators</em>, with a focus on rigorous results and graduate training.</p> -->
-        <div class="chips" aria-label="Research interests">
-         <!-- <span class="chip">Mathematical Physics</span> -->
-      <!--    <span class="chip">Magnetic Schrödinger operators</span>-->
-     <!--     <span class="chip">Quantum resonances</span>-->
-    <!--      <span class="chip">Discrete operators</span> -->
+        <p class="subtitle">Profesor Asociado en el Departamento de Matemática y Ciencia de la Computación, Universidad de Santiago de Chile. Física matemática y teoría espectral.</p> -->
+        <div class="chips" aria-label="Intereses de investigación">
+          <span class="chip">Física matemática</span>
+          <span class="chip">Teoría espectral</span>
+          <span class="chip">Operadores de Schrödinger magnéticos</span>
+          <span class="chip">Resonancias cuánticas</span>
+          <span class="chip">Operadores discretos</span>
         </div>
         <div class="actions">
           <a class="btn primary" href="#contact">📨 Contact</a>
@@ -94,7 +123,7 @@
           <a class="btn" href="#publications">📚 Publications</a>
         </div>
       </div>
-     <img class="avatar" src="IMG_7931.jpeg" alt="Pablo Miranda Rozas" />
+     <img class="avatar" src="IMG_7931.jpeg" alt="Pablo Miranda Rozas" / loading="lazy">
     </section>
 
     <section id="about" class="grid" aria-labelledby="about-title">
@@ -102,20 +131,9 @@
         <div class="card">
           <h2 class="section-title" id="about-title">About</h2>
           <p>I am <strong>Pablo Miranda Rozas</strong>, Associate Professor at the <strong>Department of Mathematics and Computer Science</strong>, <strong>Universidad de Santiago de Chile</strong>. I work on problems in <strong>mathematical physics and spectral theory</strong>, with emphasis on magnetic Schrödinger operators, resonances in Quantum Systems, and discrete operators.</p>
-  <!--        <p>Ph.D. in Mathematics, <em>Universidad de Chile</em> (2011). I have held visits and collaborations at <em>Université de Bordeaux</em>, Institut Henri Poincaré, and the Institut Mittag-Leffler, among others. I currently lead and collaborate on FONDECYT projects and co-supervise graduate students.</p>-->
+  
         </div>
-  <!--      </div>
-  <!--      <div class="col-4">
-   <!--        <div class="card" id="cv">
-       <h3 class="section-title">Education</h3>
-          <ul class="clean">
-            <li><strong>Ph.D.</strong> in Mathematics — <em>Universidad de Chile</em>, 2011.</li>
-            <li><strong>B.Sc.</strong> in Mathematics — <em>Universidad de Chile</em>, 2005.</li>
-          </ul>
-          <p class="muted">Thesis: <em>Spectral Properties of Magnetic Quantum Hamiltonians</em>. Advisor: Georgi Raikov.</p>
-        </div>
-      </div>
-    </section> -->
+  
 
     <section id="research" class="grid" aria-labelledby="research-title">
       <div class="col-4">
@@ -203,7 +221,7 @@
             <li><strong>Differential Geometry</strong> — USACH, 2022.</li>
             <li><strong>Measure Theory / Functional Analysis</strong> — USACH, 2018–2022.</li>
             <li><strong>Calculus I–III / II</strong> —  UTFSM and PUC, 2014–2017.</li>
-     <!--       <li><strong>Thesis supervision</strong> — Undergraduate and graduate.</li> -->
+     
           </ul>
         </div>
       </div>
@@ -229,26 +247,16 @@
             <strong>Address:</strong> Las Sophoras 173, Estación Central, Santiago, Chile.
           </p>
           <p>
-            <a class="btn" href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=ext6nNsAAAAJ" target="_blank" rel="noopener">📘 Google Scholar</a>
-            <a class="btn" href="https://orcid.org/0000-0003-0370-9288" target="_blank" rel="noopener">🧬 ORCID</a>
-  <!--          <a class="btn" href="https://github.com" target="_blank" rel="noopener">💻 GitHub</a>-->
-  <!--          <a class="btn" href="https://www.linkedin.com" target="_blank" rel="noopener">🔗 LinkedIn</a> -->
+            <a class="btn" href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=ext6nNsAAAAJ" target="_blank" rel="noopener noreferrer">📘 Google Scholar</a>
+            <a class="btn" href="https://orcid.org/0000-0003-0370-9288" target="_blank" rel="noopener noreferrer">🧬 ORCID</a>
+  
+  
           </p>
         </div>
       </div>
       <div class="col-4">
         <div class="card">
-   <!--       <h3 class="section-title">News</h3>
-          <ul class="clean">
-            <li><strong>Sep 2025</strong> Paper accepted in <em>Journal of Mathematical Physics</em> on resonances for multichannel discrete operators.</li>
-            <li><strong>2024</strong> Visiting Scholar, Université de Bordeaux (Feb–Jun).</li>
-            <li><strong>2023</strong> Publications in <em>Letters in Mathematical Physics</em> and <em>Journal of Functional Analysis</em>.</li>
-          </ul>
-        </div>
-      </div>
-    </section> -->
-
-    <footer class="footer">
+   <footer class="footer">
       <span>© <span id="year"></span> Pablo Miranda Rozas — All rights reserved.</span>
       <a href="#top" aria-label="Back to top">⬆️ Back to top</a>
     </footer>
