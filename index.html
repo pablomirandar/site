@@ -10,85 +10,342 @@
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0f172a" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f172a'/><text x='50' y='58' text-anchor='middle' font-size='54' fill='white' font-family='Arial, Helvetica, sans-serif'>PM</text></svg>">
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    
     html { scroll-behavior: smooth; }
-:root{
-  --bg:#0b1020;
-  --bg-soft:#111633;
 
-  /* Texto */
-  --fg:#eaf0ff;         /* un pelín más claro */
-  --muted:#a6b3c6;      /* más legible en dark */
+    :root {
+      --bg: #080e1f;
+      --bg-soft: #0f1730;
+      --bg-card: #111c38;
+      --fg: #eaf0ff;
+      --muted: #8fa3bf;
+      --accent: #38bdf8;
+      --accent-2: #a78bfa;
+      --accent-strong: #0ea5e9;
+      --line: #1e2d50;
+      --chip: #192444;
+      --shadow: 0 8px 32px rgba(0,0,0,.45);
+      --shadow-sm: 0 2px 12px rgba(0,0,0,.3);
+      --radius: 18px;
+      --radius-sm: 10px;
+    }
 
-  /* Acento celeste (moderno) */
-  --accent:#5fd3ff;
-  --accent-strong:#22b8ff;
+    :root.light {
+      --bg: #f0f5ff;
+      --bg-soft: #ffffff;
+      --bg-card: #ffffff;
+      --fg: #0f172a;
+      --muted: #4a5a73;
+      --accent: #0284c7;
+      --accent-2: #7c3aed;
+      --accent-strong: #0369a1;
+      --line: #d0ddf0;
+      --chip: #e8f0fc;
+      --shadow: 0 8px 24px rgba(2,6,23,.1);
+      --shadow-sm: 0 2px 8px rgba(2,6,23,.07);
+    }
 
-  /* Bordes/chips */
-  --line:#2a355e;       /* menos “duro” */
-  --chip:#202b55;       /* chips más visibles */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
 
-  --shadow:0 10px 30px rgba(0,0,0,.35);
-}
+    body {
+      margin: 0;
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      background:
+        radial-gradient(ellipse 1400px 700px at 90% -5%, rgba(56,189,248,.07), transparent 60%),
+        radial-gradient(ellipse 900px 600px at -5% 30%, rgba(167,139,250,.06), transparent 60%),
+        var(--bg);
+      color: var(--fg);
+      line-height: 1.65;
+      letter-spacing: .15px;
+      -webkit-font-smoothing: antialiased;
+    }
 
-:root.light{
-  --bg:#f7fbff;         /* blanco con tinte frío */
-  --bg-soft:#ffffff;
+    a { color: var(--accent); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--accent-strong); text-decoration: underline; }
 
-  --fg:#0f172a;
-  --muted:#4a5a73;
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0;
+      backdrop-filter: blur(16px) saturate(1.4);
+      -webkit-backdrop-filter: blur(16px) saturate(1.4);
+      z-index: 50;
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 13px 28px;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in oklab, var(--bg) 78%, transparent);
+      max-width: 1120px; margin: 0 auto;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid; place-items: center;
+      color: #080e1f; font-weight: 800; font-size: .85rem;
+      flex-shrink: 0;
+    }
+    .brand-title { font-weight: 700; font-size: .95rem; letter-spacing: .3px; }
+    .nav-links { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+    .nav-links a {
+      font-weight: 500; font-size: .9rem; padding: 6px 10px;
+      border-radius: 8px; color: var(--muted); transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: var(--fg); background: var(--chip); text-decoration: none; }
 
-  --accent:#0284c7;     /* celeste más “profesional” en light */
-  --accent-strong:#0369a1;
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 15px; border-radius: var(--radius-sm);
+      border: 1px solid var(--line); font-weight: 600; font-size: .88rem;
+      cursor: pointer; background: var(--bg-card);
+      box-shadow: var(--shadow-sm); transition: transform .15s, box-shadow .15s;
+      color: var(--fg); text-decoration: none;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); text-decoration: none; color: var(--fg); }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #080e1f; border: none; font-weight: 700;
+    }
+    .btn.primary:hover { color: #080e1f; }
+    .btn.sm { padding: 6px 11px; font-size: .83rem; }
 
-  --line:#d8e1ee;
-  --chip:#eef5ff;
+    /* ── LAYOUT ── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+    section { padding: 32px 0; }
 
-  --shadow:0 10px 24px rgba(2,6,23,.08);
-}
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica Neue,Arial;
-    background:
-  radial-gradient(1200px 800px at 85% -10%, rgba(56,189,248,.05), transparent 60%),
-  radial-gradient(900px 700px at -10% 20%, rgba(125,211,252,.06), transparent 60%),
-  var(--bg);
-      color:var(--fg); line-height:1.6; letter-spacing:.2px}
-    a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-strong);text-decoration:underline}
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    .nav{position:sticky;top:0;backdrop-filter:blur(10px);z-index:40}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;border-bottom:1px solid var(--line);
-      background: color-mix(in oklab, var(--bg) 82%, transparent)}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand-logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#a78bfa);
-      display:grid;place-items:center;color:#0b1020;font-weight:800}
-    .brand-title{font-weight:800;letter-spacing:.5px}
-    .nav a{font-weight:600}.nav-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;padding:56px 0 28px;align-items:center}
-    .hero-card{background:linear-gradient(180deg,color-mix(in oklab, var(--bg-soft) 85%, transparent),var(--bg-soft));
-      border:1px solid var(--line);box-shadow:var(--shadow);border-radius:24px;padding:28px}
-    .hero h1{font-size:clamp(28px,4vw,46px);line-height:1.15;margin:0 0 12px}
-    .subtitle{color:var(--muted);margin:0 0 16px}
-    .chips{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.chip{background:var(--chip);border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-size:.9rem}
-    .actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid var(--line);font-weight:700;cursor:pointer;background:var(--bg-soft);box-shadow:var(--shadow)}
-    .btn.primary{background:linear-gradient(135deg,var(--accent),#a78bfa);color:#0b1020;border:none}.btn:hover{transform:translateY(-1px)}
-    .avatar{width:220px;height:220px;border-radius:24px;border:1px solid var(--line);box-shadow:var(--shadow);object-fit:cover;display:block}
-    section{padding:28px 0}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
-    .col-4{grid-column:span 4}.col-8{grid-column:span 8}
-    .card{background:var(--bg-soft);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:20px;padding:22px}
-    .section-title{margin:0 0 14px;font-size:1.4rem}.muted{color:var(--muted)}
-    ul.clean{list-style:none;margin:0;padding:0} ul.clean li{padding:10px 0;border-bottom:1px dashed var(--line)} ul.clean li:last-child{border-bottom:none}
-    .pub-title{font-weight:700}.pub-venue{opacity:.85}.pub-meta{color:var(--muted);font-size:.95rem}
-    .footer{margin:40px 0 20px;color:var(--muted);font-size:.95rem;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.avatar{width:160px;height:160px;font-size:42px}.col-4,.col-8{grid-column:span 12}}
+    /* ── HERO ── */
+    .hero {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 36px; padding: 56px 0 36px; align-items: start;
+    }
+    .hero-content { min-width: 0; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--chip); border: 1px solid var(--line);
+      border-radius: 999px; padding: 5px 14px; font-size: .83rem;
+      color: var(--accent); font-weight: 600; margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(30px, 4.5vw, 50px); line-height: 1.1;
+      margin: 0 0 10px; font-weight: 800; letter-spacing: -.5px;
+    }
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle { color: var(--muted); margin: 0 0 22px; font-size: 1.05rem; max-width: 560px; }
+
+    .chips { display: flex; gap: 7px; flex-wrap: wrap; margin: 20px 0; }
+    .chip {
+      background: var(--chip); border: 1px solid var(--line);
+      padding: 5px 12px; border-radius: 999px; font-size: .83rem;
+      font-weight: 500; color: var(--muted); transition: border-color .2s, color .2s;
+    }
+    .chip:hover { border-color: var(--accent); color: var(--accent); }
+
+    .actions { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+
+    .avatar-wrap {
+      position: relative; flex-shrink: 0;
+    }
+    .avatar-wrap::before {
+      content: '';
+      position: absolute; inset: -3px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      z-index: 0; opacity: .6;
+    }
+    .avatar {
+      width: 210px; height: 210px; border-radius: 20px;
+      object-fit: cover; display: block;
+      position: relative; z-index: 1;
+    }
+    .avatar-placeholder {
+      width: 210px; height: 210px; border-radius: 20px;
+      background: linear-gradient(135deg, var(--bg-card), var(--chip));
+      border: 1px solid var(--line);
+      display: grid; place-items: center;
+      font-size: 4rem; position: relative; z-index: 1;
+    }
+
+    /* ── CARDS / GRID ── */
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+    .col-4 { grid-column: span 4; }
+    .col-8 { grid-column: span 8; }
+    .col-6 { grid-column: span 6; }
+    .col-12 { grid-column: span 12; }
+
+    .card {
+      background: var(--bg-card); border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm); border-radius: var(--radius);
+      padding: 24px; height: 100%;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .card:hover { border-color: color-mix(in oklab, var(--accent) 30%, var(--line)); box-shadow: var(--shadow); }
+
+    .section-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--accent); margin: 0 0 6px;
+    }
+    .section-title { margin: 0 0 18px; font-size: 1.25rem; font-weight: 700; }
+    .muted { color: var(--muted); }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .stat-card {
+      background: var(--bg-card); border: 1px solid var(--line);
+      border-radius: var(--radius-sm); padding: 18px 20px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .stat-number { font-size: 1.9rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .stat-label { font-size: .82rem; color: var(--muted); font-weight: 500; }
+
+    /* ── TIMELINE (projects) ── */
+    .timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; }
+    .timeline li {
+      display: flex; gap: 14px; padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .timeline li:last-child { border-bottom: none; }
+    .tl-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent); margin-top: 6px; flex-shrink: 0;
+    }
+    .tl-body { min-width: 0; }
+    .tl-title { font-weight: 600; font-size: .95rem; margin-bottom: 3px; }
+    .tl-meta { color: var(--muted); font-size: .85rem; }
+    .tl-badge {
+      display: inline-block; background: color-mix(in oklab, var(--accent) 15%, transparent);
+      border: 1px solid color-mix(in oklab, var(--accent) 35%, transparent);
+      color: var(--accent); padding: 2px 8px; border-radius: 999px;
+      font-size: .75rem; font-weight: 600; margin-left: 6px; vertical-align: middle;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list { list-style: none; margin: 0; padding: 0; }
+    .pub-item {
+      display: flex; gap: 16px; padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-year {
+      flex-shrink: 0; width: 44px; text-align: center;
+      font-size: .78rem; font-weight: 700; color: var(--accent);
+      background: color-mix(in oklab, var(--accent) 12%, transparent);
+      border: 1px solid color-mix(in oklab, var(--accent) 25%, transparent);
+      border-radius: 8px; padding: 4px 6px; height: fit-content;
+      margin-top: 2px; line-height: 1.2;
+    }
+    .pub-body { min-width: 0; }
+    .pub-title { font-weight: 600; font-size: .97rem; margin-bottom: 4px; }
+    .pub-authors { color: var(--muted); font-size: .88rem; margin-bottom: 3px; }
+    .pub-authors strong { color: var(--fg); }
+    .pub-venue {
+      font-size: .84rem; color: var(--muted);
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .journal-tag {
+      background: var(--chip); border: 1px solid var(--line);
+      border-radius: 6px; padding: 2px 8px; font-size: .78rem;
+      font-style: italic;
+    }
+    .doi-link { font-size: .8rem; color: var(--accent); }
+
+    /* ── TEACHING ── */
+    ul.clean { list-style: none; margin: 0; padding: 0; }
+    ul.clean li {
+      padding: 10px 0; border-bottom: 1px solid var(--line);
+      font-size: .93rem;
+    }
+    ul.clean li:last-child { border-bottom: none; }
+
+    .course-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+    .course-name { font-weight: 600; }
+    .course-year { color: var(--muted); font-size: .83rem; white-space: nowrap; }
+    .course-level {
+      font-size: .78rem; background: var(--chip); border: 1px solid var(--line);
+      border-radius: 6px; padding: 2px 7px; color: var(--muted); margin-left: 6px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-info { display: flex; flex-direction: column; gap: 12px; }
+    .contact-row { display: flex; align-items: flex-start; gap: 12px; }
+    .contact-icon {
+      width: 34px; height: 34px; border-radius: 9px;
+      background: var(--chip); border: 1px solid var(--line);
+      display: grid; place-items: center; flex-shrink: 0; font-size: 1rem;
+    }
+    .contact-text { font-size: .93rem; }
+    .contact-text strong { display: block; color: var(--muted); font-size: .78rem; font-weight: 600; text-transform: uppercase; letter-spacing: .6px; margin-bottom: 1px; }
+
+    .profiles { display: flex; flex-direction: column; gap: 10px; }
+    .profile-btn {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 14px; border-radius: var(--radius-sm);
+      border: 1px solid var(--line); background: var(--bg-card);
+      color: var(--fg); font-weight: 600; font-size: .9rem;
+      transition: border-color .2s, background .2s; text-decoration: none;
+    }
+    .profile-btn:hover { border-color: var(--accent); background: var(--chip); color: var(--fg); text-decoration: none; }
+    .profile-btn-icon { font-size: 1.2rem; }
+    .profile-btn-label { flex: 1; }
+    .profile-btn-arrow { color: var(--muted); }
+
+    /* ── RESEARCH INTEREST CARDS ── */
+    .interest-card {
+      background: var(--bg-card); border: 1px solid var(--line);
+      border-radius: var(--radius-sm); padding: 14px 16px;
+      font-size: .88rem; position: relative; overflow: hidden;
+      transition: border-color .2s;
+    }
+    .interest-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: linear-gradient(to bottom, var(--accent), var(--accent-2));
+      border-radius: 0 2px 2px 0;
+    }
+    .interest-card:hover { border-color: color-mix(in oklab, var(--accent) 35%, var(--line)); }
+    .interest-title { font-weight: 700; margin-bottom: 4px; padding-left: 8px; }
+    .interest-desc { color: var(--muted); line-height: 1.5; padding-left: 8px; font-size: .85rem; }
+
+    /* ── FOOTER ── */
+    .footer-bar {
+      border-top: 1px solid var(--line); margin-top: 24px; padding: 20px 0;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 10px; flex-wrap: wrap; color: var(--muted); font-size: .88rem;
+    }
+    .footer-bar a { color: var(--muted); }
+    .footer-bar a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .avatar-wrap { order: -1; }
+      .avatar, .avatar-placeholder { width: 140px; height: 140px; }
+      .col-4, .col-8, .col-6 { grid-column: span 12; }
+      .about-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 16px; }
+      .nav-inner { padding: 12px 16px; }
+      .hero { padding: 36px 0 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
   </style>
-
 </head>
 <body>
+
+  <!-- ══ NAV ══ -->
   <header class="nav" aria-label="Navigation bar">
-    <div class="nav-inner container">
+    <div class="nav-inner">
       <div class="brand">
         <div class="brand-logo" aria-hidden="true">PM</div>
         <div class="brand-title">Pablo Miranda Rozas</div>
@@ -99,205 +356,440 @@
         <a href="#publications">Publications</a>
         <a href="#teaching">Teaching</a>
         <a href="#contact">Contact</a>
-        <a class="btn" href="index_es.html" lang="es" hreflang="es">ES 🇪🇸</a>
-        <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">🌗 Theme</button>
+        <a class="btn sm" href="index_es.html" lang="es" hreflang="es">🇨🇱 ES</a>
+        <button class="btn sm" id="themeBtn" type="button" aria-label="Toggle theme">🌗</button>
       </nav>
     </div>
   </header>
 
   <main class="container" id="top">
+
+    <!-- ══ HERO ══ -->
     <section class="hero" aria-labelledby="main-title">
-      <div class="hero-card">
-        <h1 id="main-title">Pablo Miranda Rozas</h1>
-        <p class="subtitle"> Associate Professor at the Department of   Mathematics and  Computer Science  of the University of Santiago of Chile. </p> 
-        <div class="chips" aria-label="Intereses de investigación">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span>🎓</span> Associate Professor · USACH
+        </div>
+        <h1 id="main-title">Pablo<br><span>Miranda Rozas</span></h1>
+        <p class="subtitle">
+          Department of Mathematics and Computer Science,<br>
+          Universidad de Santiago de Chile.
+        </p>
+        <div class="chips" aria-label="Research interests">
           <span class="chip">Mathematical Physics</span>
           <span class="chip">Spectral Theory</span>
           <span class="chip">Magnetic Schrödinger Operators</span>
-          <span class="chip">Quantum Resonances </span>
+          <span class="chip">Quantum Resonances</span>
           <span class="chip">Discrete Operators</span>
         </div>
         <div class="actions">
           <a class="btn primary" href="#contact">📨 Contact</a>
-          <a class="btn" href="cvpmiranda.pdf">📄 Download CV</a>
+          <a class="btn" href="cvpmiranda.pdf">📄 CV</a>
           <a class="btn" href="#publications">📚 Publications</a>
         </div>
       </div>
-     <img class="avatar" src="IMG_7931.jpeg" alt="Pablo Miranda Rozas" / loading="lazy">
-    </section>
-
- 
-  
-
-    <section id="research" class="grid" aria-labelledby="research-title">
-      <div class="col-4">
-        <div class="card">
-          <h3 class="section-title" id="research-title">Research lines</h3>
-          <ul class="clean">
-            <li>• Magnetic Schrödinger operators: Distribution of eigenvalues, and spectral shift function asymptotitics.</li>
-            <li>• Resonances in  deformed quantum waveguides.</li>
-            <li>• Spectral properties of discrete operators (Schrödinger; Dirac/Hodge-Dirac).</li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-8">
-        <div class="card">
-          <h3 class="section-title">Selected projects</h3>
-          <ul class="clean">
-            <li>
-              <div class="pub-title">FONDECYT Regular 1241983 — <em>Spectral properties of continuous and discrete quantum Hamiltonians</em></div>
-              <div class="pub-meta">Role: PI · 2024–2027 </div>
-            </li>
-            <li>
-              <div class="pub-title">Visiting Scholar program Universit\'e de Bordeaux — Physique-Math\'ematique Bordeaux- Santiago</div>
-              <div class="pub-meta">February-June 2024</div>
-            </li>
-            <li>
-              <div class="pub-title">FONDECYT Regular 1201857 — <em>Resonances and spectral shift function for magnetic systems</em></div>
-              <div class="pub-meta">Role: PI · 2020–2023 </div>
-            </li>
-          </ul>
-        </div>
+      <div class="avatar-wrap">
+        <img class="avatar" src="IMG_7931.jpeg" alt="Photo of Pablo Miranda Rozas"
+             loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <div class="avatar-placeholder" style="display:none" aria-hidden="true">🎓</div>
       </div>
     </section>
 
+    <!-- ══ ABOUT ══ -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="grid">
+        <div class="col-8">
+          <div class="card">
+            <p class="section-label">About</p>
+            <h2 class="section-title" id="about-title">Bio</h2>
+            <p style="color:var(--muted);margin:0 0 16px;font-size:.95rem;line-height:1.75">
+              I am an Associate Professor at the Department of Mathematics and Computer Science (DMCC) of the
+              Universidad de Santiago de Chile (USACH). My research lies at the interface of mathematical physics
+              and spectral theory, with a particular focus on magnetic Schrödinger operators, quantum resonances,
+              and spectral properties of discrete operators. I currently serve as Head of the MSc Program at DMCC. 
+            </p>
+
+          </div>
+        </div>
+        <div class="col-4">
+          <div style="display:flex;flex-direction:column;gap:14px;height:100%">
+            <div class="about-grid">
+              <div class="stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Publications</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">FONDECYT grants (PI)</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Years teaching</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Graduate students</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ RESEARCH ══ -->
+    <section id="research" aria-labelledby="research-title">
+      <div class="grid">
+
+        <div class="col-4">
+          <div class="card">
+            <p class="section-label">Research</p>
+            <h2 class="section-title" id="research-title">Research lines</h2>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div class="interest-card">
+                <div class="interest-title">Magnetic Schrödinger operators</div>
+                <div class="interest-desc">Distribution of eigenvalues and spectral shift function asymptotics.</div> 
+              </div>
+              <div class="interest-card">
+                <div class="interest-title">Quantum waveguides</div>
+                   <div class="interest-desc">Resonances in deformed quantum waveguides. 
+                  <!--; twisted and bent tube geometries.-->
+                   </div> 
+              </div>
+              <div class="interest-card">
+                <div class="interest-title">Discrete operators</div>
+                  <div class="interest-desc">Spectral properties of discrete Schrödinger and Dirac operators on lattices.</div> 
+                           
+              
+              </div>
+            </div>
+          </div>
+        </div> 
+
+        <div class="col-8">
+          <div class="card">
+            <p class="section-label">Funding</p>
+            <h2 class="section-title">Selected projects</h2>
+            <ul class="timeline">
+              <li>
+                <div class="tl-dot"></div>
+                <div class="tl-body">
+                  <div class="tl-title">
+                    FONDECYT Regular 1241983
+                    <span class="tl-badge">PI · Active</span>
+                  </div>
+                  <div style="margin:3px 0 4px;font-size:.93rem;font-style:italic">Spectral properties of continuous and discrete quantum Hamiltonians</div>
+                  <div class="tl-meta">2024 – 2027</div>
+                </div>
+              </li>
+              <li>
+                <div class="tl-dot" style="background:var(--accent-2)"></div>
+                <div class="tl-body">
+                  <div class="tl-title">Visiting Scholar — Université de Bordeaux</div>
+                  <div style="margin:3px 0 4px;font-size:.93rem;font-style:italic">Physique-Mathématique Bordeaux–Santiago program</div>
+                  <div class="tl-meta">February – June 2024</div>
+                </div>
+              </li>
+              <li>
+                <div class="tl-dot" style="background:var(--muted)"></div>
+                <div class="tl-body">
+                  <div class="tl-title">FONDECYT Regular 1201857
+                    <span class="tl-badge" style="background:color-mix(in oklab,var(--muted) 15%,transparent);border-color:color-mix(in oklab,var(--muted) 35%,transparent);color:var(--muted)">PI · Completed</span>
+                  </div>
+                  <div style="margin:3px 0 4px;font-size:.93rem;font-style:italic">Resonances and spectral shift function for magnetic systems</div>
+                  <div class="tl-meta">2020 – 2023</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ PUBLICATIONS ══ -->
     <section id="publications" aria-labelledby="publications-title">
       <div class="card">
+        <p class="section-label">Research output</p>
         <h2 class="section-title" id="publications-title">Selected publications</h2>
-        <ul class="clean">
-  
+        <ul class="pub-list">
 
-    
-     <li>
-            <div class="pub-title">Spectrum of the perturbed Landau-Dirac operator</div>
-            <div class="pub-meta">Bruneau, V.;<strong>Miranda, P.</strong><span class="pub-venue"> Annales Henri Poincaré, https://doi.org/10.1007/s00023-025-01652-1 </span>.</div>
-          </li>  
-            <li>
-            <div class="pub-title">Singularities of the magnetic spectral shift function for potentials of variable sign</div>
-            <div class="pub-meta"><strong>Miranda, P.</strong>, Bruneau, V., Levitina, G. <span class="pub-venue"> Journal of Spectral Theory, DOI 10.4171/JST/579</span>.</div>
-          </li>      
-          <li>
-            <div class="pub-title">Clusters of resonances for a non-selfadjoint multichannel discrete Schrödinger operator</div>
-            <div class="pub-meta"><strong>Miranda, P.</strong>, Assal, M., Bourget, O., Sambou, D. (2025). <span class="pub-venue">Journal of Mathematical Physics 66, 073504</span>.</div>
+          <li class="pub-item">
+            <div class="pub-year">2025</div>
+            <div class="pub-body">
+              <div class="pub-title">Spectrum of the perturbed Landau-Dirac operator</div>
+              <div class="pub-authors">Bruneau, V.; <strong>Miranda, P.</strong></div>
+              <div class="pub-venue">
+                <span class="journal-tag">Annales Henri Poincaré</span>
+                <a class="doi-link" href="https://doi.org/10.1007/s00023-025-01652-1" target="_blank" rel="noopener">DOI ↗</a>
+              </div>
+            </div>
           </li>
-          <li>
-            <div class="pub-title">Eigenvalue Asymptotics Near a Flat Band in the Presence of a Slowly Decaying Potential</div>
-            <div class="pub-meta">Parra, D.; <strong>Miranda, P.</strong> (2025). <span class="pub-venue">Asymptotic Analysis 142(4)</span>.</div>
+
+          <li class="pub-item">
+            <div class="pub-year">2025</div>
+            <div class="pub-body">
+              <div class="pub-title">Clusters of resonances for a non-selfadjoint multichannel discrete Schrödinger operator</div>
+              <div class="pub-authors"> Assal, M.; Bourget, O.; <strong>Miranda, P.</strong>;Sambou, D.</div>
+              <div class="pub-venue">
+                <span class="journal-tag">Journal of Mathematical Physics</span>
+                <span style="font-size:.82rem;color:var(--muted)">66, 073504</span>
+              </div>
+            </div>
           </li>
-          <li>
-            <div class="pub-title">Semiclassical resolvent estimates for matrix Schrödinger operators and applications</div>
-            <div class="pub-meta">Assal, M.; Zerzeri, M.; <strong>Miranda, P.</strong> (2025). <span class="pub-venue">Reviews in Mathematical Physics 37(05), 2450043</span>.</div>
+
+          <li class="pub-item">
+            <div class="pub-year">2025</div>
+            <div class="pub-body">
+              <div class="pub-title">Eigenvalue Asymptotics Near a Flat Band in the Presence of a Slowly Decaying Potential</div>
+              <div class="pub-authors"><strong>Miranda, P.</strong>.;Parra, D.</div>
+              <div class="pub-venue">
+                <span class="journal-tag">Asymptotic Analysis</span>
+                <span style="font-size:.82rem;color:var(--muted)">142(4)</span>
+              </div>
+            </div>
           </li>
-          <li>
-            <div class="pub-title">Continuum Limit for a Discrete Hodge-Dirac Operator on Square Lattices</div>
-            <div class="pub-meta"><strong>Miranda, P.</strong>; Parra, D. (2023). <span class="pub-venue">Letters in Mathematical Physics 113, 45</span>.</div>
+
+          <li class="pub-item">
+            <div class="pub-year">2025</div>
+            <div class="pub-body">
+              <div class="pub-title">Semiclassical resolvent estimates for matrix Schrödinger operators and applications</div>
+              <div class="pub-authors">Assal, M.; <strong>Miranda, P.</strong>;Zerzeri, M.; </div>
+              <div class="pub-venue">
+                <span class="journal-tag">Reviews in Mathematical Physics</span>
+                <span style="font-size:.82rem;color:var(--muted)">37(05), 2450043</span>
+              </div>
+            </div>
           </li>
-          <li>
-            <div class="pub-title">Spectral Asymptotics at Thresholds for a Dirac-type Operator on ℤ²</div>
-            <div class="pub-meta">Parra, D.; Raikov, G.; <strong>Miranda, P.</strong> (2023). <span class="pub-venue">Journal of Functional Analysis 284(2)</span>.</div>
+
+          <li class="pub-item">
+            <div class="pub-year">2025</div>
+            <div class="pub-body">
+              <div class="pub-title">Singularities of the magnetic spectral shift function for potentials of variable sign</div>
+              <div class="pub-authors">Bruneau, V.;<strong>Miranda, P.</strong>;  Levitina, G.</div>
+              <div class="pub-venue">
+                <span class="journal-tag">Journal of Spectral Theory</span>
+                <a class="doi-link" href="https://doi.org/10.4171/JST/579" target="_blank" rel="noopener">DOI ↗</a>
+              </div>
+            </div>
           </li>
-          <li>
-            <div class="pub-title">Eigenvalue and Resonance Asymptotics in Perturbed Periodically Twisted Tubes: Twisting Versus Bending</div>
-            <div class="pub-meta">Bruneau, V.; Parra, D.; Popoff, N.; <strong>Miranda, P.</strong> (2020). <span class="pub-venue">Annales Henri Poincaré 21, 377–403</span>.</div>
+
+          <li class="pub-item">
+            <div class="pub-year">2023</div>
+            <div class="pub-body">
+              <div class="pub-title">Continuum Limit for a Discrete Hodge-Dirac Operator on Square Lattices</div>
+              <div class="pub-authors"><strong>Miranda, P.</strong>; Parra, D.</div>
+              <div class="pub-venue">
+                <span class="journal-tag">Letters in Mathematical Physics</span>
+                <span style="font-size:.82rem;color:var(--muted)">113, 45</span>
+              </div>
+            </div>
           </li>
+
+          <li class="pub-item">
+            <div class="pub-year">2023</div>
+            <div class="pub-body">
+              <div class="pub-title">Spectral Asymptotics at Thresholds for a Dirac-type Operator on ℤ²</div>
+              <div class="pub-authors">Parra, D.; <strong>Miranda, P.</strong>; Raikov, G.; </div>
+              <div class="pub-venue">
+                <span class="journal-tag">Journal of Functional Analysis</span>
+                <span style="font-size:.82rem;color:var(--muted)">284(2)</span>
+              </div>
+            </div>
+          </li>
+
+ <!--         <li class="pub-item">
+            <div class="pub-year">2020</div>
+            <div class="pub-body">
+              <div class="pub-title">Eigenvalue and Resonance Asymptotics in Perturbed Periodically Twisted Tubes: Twisting Versus Bending</div>
+              <div class="pub-authors">Bruneau, V.; Parra, D.; Popoff, N.; <strong>Miranda, P.</strong></div>
+              <div class="pub-venue">
+                <span class="journal-tag">Annales Henri Poincaré</span>
+                <span style="font-size:.82rem;color:var(--muted)">21, 377–403</span>
+              </div>
+            </div>
+          </li>
+-->
+
         </ul>
       </div>
     </section>
 
-    <section id="teaching" class="grid" aria-labelledby="teaching-title">
-      <div class="col-8">
-        <div class="card">
-          <h2 class="section-title" id="teaching-title">Teaching</h2>
-          <ul class="clean">
-            <li><strong>Topology and Geometry I</strong> — USACH Graduate Program, 2020 & 2023.</li>
-            <li><strong>Spectral Theory </strong> — USACH Graduate Program, 2021.</li>
-            <li><strong>Analysis I</strong> — USACH Graduate Program, 2018–2019.</li>
-            <li><strong>Differential Geometry</strong> — USACH, 2022.</li>
-            <li><strong>Measure Theory / Functional Analysis</strong> — USACH, 2018–2022.</li>
-            <li><strong>Calculus I–III / II</strong> —  UTFSM and PUC, 2014–2017.</li>
-     
-          </ul>
+    <!-- ══ TEACHING ══ -->
+    <section id="teaching" aria-labelledby="teaching-title">
+      <div class="grid">
+        <div class="col-8">
+          <div class="card">
+            <p class="section-label">Teaching</p>
+            <h2 class="section-title" id="teaching-title">Courses</h2>
+            <ul class="clean">
+            <li>
+                <div class="course-row">
+                  <span><span class="course-name">Introduction to PDEs</span><span class="course-level">Undergraduate</span></span>
+                  <span class="course-year">USACH · 2026</span>
+                </div>
+              </li>
+              <li>
+                <div class="course-row">
+                  <span><span class="course-name">Topology and Geometry I</span><span class="course-level">Graduate</span></span>
+                  <span class="course-year">USACH · 2020 &amp; 2023</span>
+                </div>
+              </li>
+              <li>
+                <div class="course-row">
+                  <span><span class="course-name">Spectral Theory</span><span class="course-level">Graduate</span></span>
+                  <span class="course-year">USACH · 2021 &amp; 2023</span>
+                </div>
+              </li>
+              <li>
+                <div class="course-row">
+                  <span><span class="course-name">Analysis I</span><span class="course-level">Graduate</span></span>
+                  <span class="course-year">USACH · 2018–2019</span>
+                </div>
+              </li>
+              <li>
+                <div class="course-row">
+                  <span><span class="course-name">Differential Geometry</span><span class="course-level">Undergraduate</span></span>
+                  <span class="course-year">USACH · 2022</span>
+                </div>
+              </li>
+              <li>
+                <div class="course-row">
+                  <span><span class="course-name">Measure Theory / Functional Analysis</span><span class="course-level">Undergraduate</span></span>
+                  <span class="course-year">USACH · 2018–2025</span>
+                </div>
+              </li>
+              <li>
+                <div class="course-row">
+                  <span><span class="course-name">Calculus I, II &amp; III </span><span class="course-level">Undergraduate</span></span>
+                  <span class="course-year">UTFSM &amp; PUC · 2014–2017</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <p class="section-label">Roles</p>
+            <h3 class="section-title">Administration</h3>
+            <ul class="clean">
+              <li>
+                <div style="font-weight:600;margin-bottom:2px">Head of the MSc Program</div>
+                <div style="color:var(--muted);font-size:.85rem">Department of Mathematics, USACH · 2022–present</div>
+              </li>
+              <li>
+                <div style="font-weight:600;margin-bottom:2px">   Deputy Director of Research</div>
+                <div style="color:var(--muted);font-size:.85rem">Department of Mathematics, USACH · 2022–2024</div>
+              </li>
+              <li>
+                <div style="font-weight:600;margin-bottom:2px">Coordinator of the course Calculus 2. </div>
+                <div style="color:var(--muted);font-size:.85rem">School of Engineering, USACH · 2019–2022</div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="col-4">
-        <div class="card">
-          <h3 class="section-title">Service & roles</h3>
-          <ul class="clean">
-            <li>Head of the MSc program, DMCC, USACH — 2022–present.</li>
-<!--            <li>Associate Chair for Research, DMCC, USACH — Apr 2022–Dec 2023.</li> -->
-            <li>Coordinator, Calculus II (School of Engineering, USACH) — 2019–2022.</li>
-          </ul>
+    </section>
+    
+
+
+    <!-- ══ CONTACT ══ -->
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="grid">
+        <div class="col-8">
+          <div class="card">
+            <p class="section-label">Contact</p>
+            <h2 class="section-title" id="contact-title">Get in touch</h2>
+            <div class="contact-info">
+              <div class="contact-row">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-text">
+                  <strong>Email</strong>
+                  <a href="mailto:pablo.miranda.r@usach.cl">pablo.miranda.r@usach.cl</a>
+                </div>
+              </div>
+              <div class="contact-row">
+                <div class="contact-icon">🏛️</div>
+                <div class="contact-text">
+                  <strong>Affiliation</strong>
+                  Departamento de Matemática y Ciencia de la Computación, Universidad de Santiago de Chile
+                </div>
+              </div>
+              <div class="contact-row">
+                <div class="contact-icon">📍</div>
+                <div class="contact-text">
+                  <strong>Address</strong>
+                  Las Sophoras 173, Estación Central, Santiago, Chile
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <p class="section-label">Profiles</p>
+            <h3 class="section-title">Online profiles</h3>
+            <div class="profiles">
+              <a class="profile-btn" href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=ext6nNsAAAAJ" target="_blank" rel="noopener noreferrer">
+                <span class="profile-btn-icon">📘</span>
+                <span class="profile-btn-label">Google Scholar</span>
+                <span class="profile-btn-arrow">↗</span>
+              </a>
+              <a class="profile-btn" href="https://orcid.org/0000-0003-0370-9288" target="_blank" rel="noopener noreferrer">
+                <span class="profile-btn-icon">🟢</span>
+                <span class="profile-btn-label">ORCID</span>
+                <span class="profile-btn-arrow">↗</span>
+              </a>
+              <a class="profile-btn" href="cvpmiranda.pdf" target="_blank" rel="noopener">
+                <span class="profile-btn-icon">📄</span>
+                <span class="profile-btn-label">Curriculum Vitae</span>
+                <span class="profile-btn-arrow">↗</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="grid" aria-labelledby="contact-title">
-      <div class="col-8">
-        <div class="card">
-          <h2 class="section-title" id="contact-title">Contact</h2>
-          <p>
-            <strong>Email:</strong> <a href="mailto:pablo.miranda.r@usach.cl">pablo.miranda.r@usach.cl</a><br/>
-            <strong>Affiliation:</strong> Departamento de Matemática y Ciencia de la Computación, Universidad de Santiago de Chile.<br/>
-            <strong>Address:</strong> Las Sophoras 173, Estación Central, Santiago, Chile.
-          </p>
-          <p>
-            <a class="btn" href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=ext6nNsAAAAJ" target="_blank" rel="noopener noreferrer">📘 Google Scholar</a>
-            <a class="btn" href="https://orcid.org/0000-0003-0370-9288" target="_blank" rel="noopener noreferrer">🧬 ORCID</a>
-  
-  
-          </p>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card">
-   <footer class="footer">
-      <span>© <span id="year"></span> Pablo Miranda Rozas — All rights reserved.</span>
-      <a href="#top" aria-label="Back to top">⬆️ Back to top</a>
-    </footer>
   </main>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Pablo Miranda Rozas",
-  "email": "mailto:pablo.miranda.r@usach.cl",
-  "affiliation": {
-    "@type": "Organization",
-    "name": "Universidad de Santiago de Chile"
-  },
-  "jobTitle": "Associate Professor / Researcher",
-  "alumniOf": {
-    "@type": "Organization",
-    "name": "Universidad de Chile"
-  },
-  "knowsAbout": [
-    "Mathematical Physics",
-    "Magnetic Schrödinger operators",
-    "Quantum resonances",
-    "Discrete operators"
-  ],
-  "sameAs": [
-    "https://orcid.org/0000-0003-0370-9288",
-    "https://scholar.google.com/citations?user=ext6nNsAAAAJ"
-  ]
-}
-</script>
+  <!-- ══ FOOTER ══ -->
+  <footer class="container">
+    <div class="footer-bar">
+      <span>© <span id="year"></span> Pablo Miranda Rozas · All rights reserved.</span>
+      <a href="#top" aria-label="Back to top">↑ Back to top</a>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pablo Miranda Rozas",
+    "email": "mailto:pablo.miranda.r@usach.cl",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Universidad de Santiago de Chile"
+    },
+    "jobTitle": "Associate Professor",
+    "knowsAbout": ["Mathematical Physics","Magnetic Schrödinger operators","Quantum resonances","Discrete operators"],
+    "sameAs": [
+      "https://orcid.org/0000-0003-0370-9288",
+      "https://scholar.google.com/citations?user=ext6nNsAAAAJ"
+    ]
+  }
+  </script>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     const root = document.documentElement;
     const themeBtn = document.getElementById('themeBtn');
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') root.classList.add('light');
- themeBtn.addEventListener('click', () => {
-  root.classList.toggle('light');
-  localStorage.setItem(
-    'theme',
-    root.classList.contains('light') ? 'light' : 'dark'
-  );
-});
-
+    if (localStorage.getItem('theme') === 'light') root.classList.add('light');
+    themeBtn.addEventListener('click', () => {
+      root.classList.toggle('light');
+      localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+    });
   </script>
+
 </body>
 </html>
